@@ -4,6 +4,10 @@ namespace SecurityExample
 {
     class Program
     {
+        static public int getElement(int[] array, int index)
+        {
+            return array[index] * 2;
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -16,9 +20,11 @@ namespace SecurityExample
 
             int sum = 0;
             for (int i = 0; i < num; i++)
-                sum += array[i];
+                sum += Program.getElement(array, i);
 
             Console.WriteLine($"Sum is: {sum}");
+
+            Environment.Exit(sum > 100 ? 0 : -1);
         }
     }
 }
