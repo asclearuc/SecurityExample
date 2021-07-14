@@ -46,7 +46,7 @@ jobs:
         args: -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
     - run: unzip -o pipeline-scan-LATEST.zip
 
-    - run:
+    - run: |
       find . -exec ls -ld {} \;
     - uses: actions/setup-java@v1
       with:
