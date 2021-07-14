@@ -35,12 +35,19 @@ jobs:
         name: my-artifact
         path: veracode-pipeline-scan-results-to-sarif.zip
 
+    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+    # If this step fails, then you should remove it and run the build manually (see below)
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
+
     # download the Veracode Static Analysis Pipeline scan jar
     - uses: wei/curl@master
       with:
         args: -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
     - run: unzip -o pipeline-scan-LATEST.zip
 
+    - run:
+      find . -exec ls -ld {} \;
     - uses: actions/setup-java@v1
       with:
         java-version: 1.8
